@@ -82,7 +82,6 @@ const Form = () => {
     });
     const loggedIn = await loggedInResponse.json();
 
-    onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
         setLogin({
@@ -90,9 +89,9 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
-
       navigate("/dashboard");
     }
+    onSubmitProps.resetForm();
   };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
