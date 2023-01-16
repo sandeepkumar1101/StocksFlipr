@@ -139,6 +139,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                   textDecoration: "none",
                   color: "inherit",
                 }}
+                onClick={() => dispatch(setLogout())}
                 to="/login"
               >
                 <MenuItem>Log Out</MenuItem>
