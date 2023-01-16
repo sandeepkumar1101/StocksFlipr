@@ -153,9 +153,9 @@ const Sidebar = ({
               <Box
                 component="img"
                 alt="profile"
-                src={`http://localhost:5001/assets/${localStorage.getItem(
-                  "picturePath"
-                )}`}
+                src={`${
+                  process.env.REACT_APP_BASE_URL
+                }/assets/${localStorage.getItem("picturePath")}`}
                 height="40px"
                 width="40px"
                 borderRadius="50%"

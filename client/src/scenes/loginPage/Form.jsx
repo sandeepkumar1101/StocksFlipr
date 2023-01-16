@@ -51,6 +51,7 @@ const Form = () => {
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
   const theme = useTheme();
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -59,14 +60,12 @@ const Form = () => {
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
+    // get the login url from env
 
-    const savedUserResponse = await fetch(
-      "http://localhost:5001/auth/register",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const savedUserResponse = await fetch(`${baseUrl}/auth/register`, {
+      method: "POST",
+      body: formData,
+    });
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
@@ -76,7 +75,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:5001/auth/login", {
+    const loggedInResponse = await fetch(`${baseUrl}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
