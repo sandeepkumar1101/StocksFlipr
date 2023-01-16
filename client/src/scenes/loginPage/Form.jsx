@@ -89,7 +89,7 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
-      navigate("/dashboard");
+      navigate("/");
     }
     onSubmitProps.resetForm();
   };
